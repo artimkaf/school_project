@@ -30,20 +30,6 @@ background-color: rgb(71, 71, 69);</string>
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>190</y>
-      <width>361</width>
-      <height>361</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/newPrefix/4489659.png);
-</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="widget" native="true">
-    <property name="geometry">
-     <rect>
       <x>-1</x>
       <y>-1</y>
       <width>301</width>
@@ -53,7 +39,7 @@ background-color: rgb(71, 71, 69);</string>
     <property name="styleSheet">
      <string notr="true">background-color: qradialgradient(spread:pad, cx:0.483, cy:0.926, radius:2, fx:0, fy:0.119, stop:0.393035 rgba(183, 193, 195, 255), stop:0.39801 rgba(136, 146, 147, 255));</string>
     </property>
-    <widget class="QPushButton" name="setbtn">
+    <widget class="QPushButton" name="settings_button">
      <property name="geometry">
       <rect>
        <x>60</x>
@@ -70,6 +56,25 @@ background-color: rgb(227, 232, 235);</string>
      </property>
      <property name="text">
       <string>Settings</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="play_button">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>70</y>
+       <width>171</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:30px;
+font: 20pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(71, 71, 69);
+background-color: rgb(227, 232, 235);</string>
+     </property>
+     <property name="text">
+      <string>Play</string>
      </property>
     </widget>
    </widget>
@@ -93,13 +98,29 @@ font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:28pt;&quot;&gt;FREE TIME CHESS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <zorder>widget</zorder>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>190</y>
+      <width>371</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/Prefix/4489659.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>label</zorder>
    <zorder>widget</zorder>
+   <zorder>label_2</zorder>
   </widget>
  </widget>
  <resources>
-  <include location="jygjt.qrc"/>
+  <include location="resourse files.qrc"/>
  </resources>
  <connections/>
 </ui>

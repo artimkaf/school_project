@@ -1,53 +1,81 @@
 import sys
-import random
 
 from PyQt6 import QtWidgets
-# from PyQt6 import uic
-# from PyQt6.QtCore import *
 from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 from PyQt6.uic import *
-
-title_names = ['Free time chess', 'Бесплатное время шахматы']
 
 
 class WindowMain(QtWidgets.QMainWindow):
     def __init__(self):
         super(WindowMain, self).__init__()
-        self.settings_button = WindowSettings()
         loadUi('window-main.ui', self)
+        self.setFixedSize(800, 600)
 
-        self.settings_button.clicked.connect(self.gotosetbtn)
+        self.play_button.clicked.connect(self.press_play_button)
+        self.settings_button.clicked.connect(self.press_settings_button)
 
     def press_settings_button(self):
-        settings_button = WindowSettings()
-        widget.addWidget(self.settings_button)
+        windowSettings = WindowSettings()
+        widget.addWidget(windowSettings)
+        widget.removeWidget(windowMain)
         widget.setCurrentIndex(widget.currentIndex() + 1)
-        #print ('clicked')
-        #self.Window = setwin()
+
+    def press_play_button(self):
+        windowPlay = WindowPlay()
+        widget.addWidget(windowPlay)
+        widget.removeWidget(windowMain)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
 
 
 class WindowSettings(QtWidgets.QMainWindow):
     def __init__(self):
         super(WindowSettings, self).__init__()
         loadUi('window-settings.ui', self)
-        #то что ниже работать не хочет
-        '''
-        self.exitmenubtn.clicked.connect(self.gotosetbtn)
-        
-    def gotoexitmenubtn(self):
-        exitmenubtn = mainwin()
-        widget.addWidget(exitmenubtn)
+        self.setFixedSize(800, 600)
+
+        self.menu_button.clicked.connect(self.press_menu_button)
+
+    def press_menu_button(self):
+        windowMain = WindowMain()
+        widget.addWidget(windowMain)
+        widget.removeWidget(windowSettings)
         widget.setCurrentIndex(widget.currentIndex() + 1)
+
+class WindowPlay(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(WindowPlay, self).__init__()
+        loadUi('window-play.ui', self)
+        self.setFixedSize(800, 600)
+
+        self.more_button.clicked.connect(self.press_more_button)
+
+    def press_more_button(self):
+        windowMain = WindowMain()
+        widget.addWidget(windowMain)
+        widget.removeWidget(windowPlay)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
+
+
+
 '''
+app = QApplication(sys.argv)
 
+window = WindowMain()
+window.show()
 
+app.exec()
+
+'''
 app = QApplication(sys.argv)
 windowMain = WindowMain()
+windowSettings = WindowSettings()
+windowPlay = WindowPlay()
 widget = QtWidgets.QStackedWidget()
 widget.addWidget(windowMain)
-widget.setFixedSize(800, 600)
-widget.setWindowTitle(random.choice(title_names))
+widget.addWidget(windowSettings)
+widget.addWidget(windowPlay)
+widget.setWindowTitle('Free time chess')
 widget.setWindowIcon(QIcon("chess_piece_king.png"))
 widget.show()
 app.exec()
