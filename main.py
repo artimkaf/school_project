@@ -19,12 +19,14 @@ class WindowMain(QtWidgets.QMainWindow):
         windowSettings = WindowSettings()
         widget.addWidget(windowSettings)
         widget.removeWidget(windowMain)
+        widget.removeWidget(windowPlay)
         widget.setCurrentIndex(widget.currentIndex() + 1)
 
     def press_play_button(self):
         windowPlay = WindowPlay()
         widget.addWidget(windowPlay)
         widget.removeWidget(windowMain)
+        widget.removeWidget(windowSettings)
         widget.setCurrentIndex(widget.currentIndex() + 1)
 
 
@@ -40,6 +42,7 @@ class WindowSettings(QtWidgets.QMainWindow):
         windowMain = WindowMain()
         widget.addWidget(windowMain)
         widget.removeWidget(windowSettings)
+        widget.removeWidget(windowPlay)
         widget.setCurrentIndex(widget.currentIndex() + 1)
 
 class WindowPlay(QtWidgets.QMainWindow):
@@ -54,6 +57,7 @@ class WindowPlay(QtWidgets.QMainWindow):
         windowMain = WindowMain()
         widget.addWidget(windowMain)
         widget.removeWidget(windowPlay)
+        widget.removeWidget(windowSettings)
         widget.setCurrentIndex(widget.currentIndex() + 1)
 
 
