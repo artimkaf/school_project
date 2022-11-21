@@ -53,8 +53,13 @@ class WindowSettings(QtWidgets.QMainWindow):
 class WindowPlay(QtWidgets.QMainWindow):
     def __init__(self):
         super(WindowPlay, self).__init__()
-        loadUi('window-play.ui', self)
         self.setFixedSize(800, 600)
+
+        loadUi('window-play.ui', self)
+
+        self.pixmap = QPixmap('daskjdhaskj.png')
+        self.background.setPixmap(self.pixmap)
+        self.background.setScaledContents(1)
 
         self.more_button.clicked.connect(self.press_more_button)
 
