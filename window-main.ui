@@ -98,7 +98,7 @@ font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:28pt;&quot;&gt;FREE TIME CHESS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="chess_image">
     <property name="geometry">
      <rect>
       <x>360</x>
@@ -108,19 +108,25 @@ font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/Prefix/4489659.png);</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string/>
     </property>
+    <property name="pixmap">
+     <pixmap resource="resoursefiles.qrc">:/Prefix/4489659.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
    </widget>
    <zorder>label</zorder>
    <zorder>widget</zorder>
-   <zorder>label_2</zorder>
+   <zorder>chess_image</zorder>
   </widget>
  </widget>
  <resources>
-  <include location="resourse files.qrc"/>
+  <include location="resoursefiles.qrc"/>
  </resources>
  <connections/>
 </ui>

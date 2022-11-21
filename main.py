@@ -10,7 +10,12 @@ class WindowMain(QtWidgets.QMainWindow):
     def __init__(self):
         super(WindowMain, self).__init__()
         loadUi('window-main.ui', self)
-        self.setFixedSize(800, 600)
+
+        self.chess_image = QLabel(self)
+        self.pixmap = QPixmap('4489659.png')
+        self.chess_image.setPixmap(self.pixmap)
+        self.chess_image.setGeometry(360,190,371,361)
+        self.chess_image.setScaledContents(1)
 
         self.play_button.clicked.connect(self.press_play_button)
         self.settings_button.clicked.connect(self.press_settings_button)
