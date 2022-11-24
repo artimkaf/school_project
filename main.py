@@ -1,9 +1,14 @@
 import sys
+import random
 
 from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 from PyQt6.uic import *
+
+black_or_white_lives_matter = (random.choice(['white', 'black']))
+print (black_or_white_lives_matter)
+
 
 
 class WindowMain(QtWidgets.QMainWindow):
@@ -11,10 +16,8 @@ class WindowMain(QtWidgets.QMainWindow):
         super(WindowMain, self).__init__()
         loadUi('window-main.ui', self)
 
-        self.chess_image = QLabel(self)
         self.pixmap = QPixmap('4489659.png')
         self.chess_image.setPixmap(self.pixmap)
-        self.chess_image.setGeometry(360,190,371,361)
         self.chess_image.setScaledContents(1)
 
         self.play_button.clicked.connect(self.press_play_button)
@@ -39,7 +42,6 @@ class WindowSettings(QtWidgets.QMainWindow):
     def __init__(self):
         super(WindowSettings, self).__init__()
         loadUi('window-settings.ui', self)
-        self.setFixedSize(800, 600)
 
         self.menu_button.clicked.connect(self.press_menu_button)
 
@@ -53,15 +55,78 @@ class WindowSettings(QtWidgets.QMainWindow):
 class WindowPlay(QtWidgets.QMainWindow):
     def __init__(self):
         super(WindowPlay, self).__init__()
-        self.setFixedSize(800, 600)
+        if black_or_white_lives_matter == 'white':
+            loadUi('window-play-white.ui', self)
+        if black_or_white_lives_matter == 'black':
+            loadUi('window-play-black.ui', self)
 
-        loadUi('window-play.ui', self)
-
-        self.pixmap = QPixmap('daskjdhaskj.png')
+        self.pixmap = QPixmap('chess-board.png')
         self.background.setPixmap(self.pixmap)
         self.background.setScaledContents(1)
 
+        self.chess_board()
+
+        self.first_button_click()
+
         self.more_button.clicked.connect(self.press_more_button)
+
+    def first_button_click(self):
+        pass
+
+    def second_button_click(self, first_button):
+        pass
+
+    def move_chess_piece(self, first_button, second_button):
+        pass
+
+
+    def chess_board(self):
+        '''
+
+        chess_board1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+        chess_board2 = [1, 2, 3, 4, 5, 6, 7, 8]
+
+        for i in range(8):
+            for j in range(8):
+                self.'i''j'.setText('♙')
+        '''
+
+        self.a2.setText('♙')
+        self.b2.setText('♙')
+        self.c2.setText('♙')
+        self.d2.setText('♙')
+        self.e2.setText('♙')
+        self.f2.setText('♙')
+        self.g2.setText('♙')
+        self.h2.setText('♙')
+        #
+        self.a1.setText('♖')
+        self.b1.setText('♘')
+        self.c1.setText('♗')
+        self.d1.setText('♕')
+        self.e1.setText('♔')
+        self.f1.setText('♗')
+        self.g1.setText('♘')
+        self.h1.setText('♖')
+        #
+        self.a7.setText('♟')
+        self.b7.setText('♟')
+        self.c7.setText('♟')
+        self.d7.setText('♟')
+        self.e7.setText('♟')
+        self.f7.setText('♟')
+        self.g7.setText('♟')
+        self.h7.setText('♟')
+        #
+        self.a8.setText('♜')
+        self.b8.setText('♞')
+        self.c8.setText('♝')
+        self.d8.setText('♛')
+        self.e8.setText('♚')
+        self.f8.setText('♝')
+        self.g8.setText('♞')
+        self.h8.setText('♜')
+
 
     def press_more_button(self):
         windowMain = WindowMain()
@@ -89,6 +154,7 @@ widget = QtWidgets.QStackedWidget()
 widget.addWidget(windowMain)
 widget.addWidget(windowSettings)
 widget.addWidget(windowPlay)
+widget.setFixedSize(800, 600)
 widget.setWindowTitle('Free time chess')
 widget.setWindowIcon(QIcon("chess_piece_king.png"))
 widget.show()
