@@ -6,6 +6,8 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 from PyQt6.uic import *
 
+from trash import moves
+
 black_or_white_lives_matter = (random.choice(['white', 'black']))
 print (black_or_white_lives_matter)
 
@@ -70,26 +72,12 @@ class WindowPlay(QtWidgets.QMainWindow):
 
         self.more_button.clicked.connect(self.press_more_button)
 
-    def first_button_click(self):
-        pass
 
-    def second_button_click(self, first_button):
-        pass
 
-    def move_chess_piece(self, first_button, second_button):
-        pass
+
 
 
     def chess_board(self):
-        '''
-
-        chess_board1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
-        chess_board2 = [1, 2, 3, 4, 5, 6, 7, 8]
-
-        for i in range(8):
-            for j in range(8):
-                self.'i''j'.setText('♙')
-        '''
 
         self.a2.setText('♙')
         self.b2.setText('♙')
