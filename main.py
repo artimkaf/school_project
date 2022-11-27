@@ -99,14 +99,42 @@ class WindowPlay(QtWidgets.QMainWindow):
             [self.a8, self.b8, self.c8, self.d8, self.e8, self.f8, self.g8, self.h8]
         ]
 
+        self.board_buttons = [
+            [{
+                'coord': 'a1',
+                'button': self.a1,
+                'info': {
+                    'type': 'pawn',
+                    'color': 'black',
+                    'row': 6,
+                    'column': 1,
+                }
+            }, self.b1, self.c1, self.d1, self.e1, self.f1, self.g1, self.h1],
+            [self.a2, self.b2, self.c2, self.d2, self.e2, self.f2, self.g2, self.h2],
+            [self.a3, self.b3, self.c3, self.d3, self.e3, self.f3, self.g3, self.h3],
+            [self.a4, self.b4, self.c4, self.d4, self.e4, self.f4, self.g4, self.h4],
+            [self.a5, self.b5, self.c5, self.d5, self.e5, self.f5, self.g5, self.h5],
+            [self.a6, self.b6, self.c6, self.d6, self.e6, self.f6, self.g6, self.h6],
+            [self.a7, self.b7, self.c7, self.d7, self.e7, self.f7, self.g7, self.h7],
+            [self.a8, self.b8, self.c8, self.d8, self.e8, self.f8, self.g8, self.h8]
+        ]
+
         chess_piese_list = []
         self.move_save = []
 
-        for name in self.chess_board_list[6]:
-            name.setText('♟')
+        index = 0
+        for button in self.chess_board_list[6]:
+            button.setText('♟')
+            figure = {
+                'type': 'pawn',
+                'color': 'black',
+                'row': 6,
+                'column': index,
+            }
+            index += 1
 
-        for name1 in self.chess_board_list[1]:
-            name1.setText('♙')
+        for button in self.chess_board_list[1]:
+            button.setText('♙')
 
         for row in range(8):
             for column in range(8):
@@ -140,20 +168,33 @@ class WindowPlay(QtWidgets.QMainWindow):
 
     def press_field(self, row, column):
         print(row, column)
+        # if len(self.move_save) == 0 and self.chess_board_list[row][column].text() != "":
         self.move_save.append({'row': row, 'column': column})
         print(self.move_save)
         self.check()
 
+
     def check(self):
-        if len(self.move_save) == 2:
-            rowFrom = self.move_save[0]['row']
-            columnFrom = self.move_save[0]['column']
-            fromText = self.chess_board_list[rowFrom][columnFrom].text()
-            self.chess_board_list[rowFrom][columnFrom].setText('')
-            rowTo = self.move_save[1]['row']
-            columnTo = self.move_save[1]['column']
-            self.chess_board_list[rowTo][columnTo].setText(fromText)
+        if len(self.move_save) != 2:
+            return False
+
+        row_from = self.move_save[0]['row']
+        column_from = self.move_save[0]['column']
+        row_to = self.move_save[1]['row']
+        column_to = self.move_save[1]['column']
+        from_text = self.chess_board_list[row_from][column_from].text()
+
+        if from_text == "":
             self.move_save.clear()
+            return False
+
+        # if board_buttons[row_from][column_from]['info']['color'] == board_buttons[row_to][column_to]['info']['color']:
+        #     self.move_save.clear()
+        #     return False
+
+        self.chess_board_list[row_from][column_from].setText('')
+        self.chess_board_list[row_to][column_to].setText(from_text)
+        self.move_save.clear()
 
 
         '''
