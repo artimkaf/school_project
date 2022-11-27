@@ -1439,8 +1439,8 @@ background-color: transparent</string>
      <rect>
       <x>630</x>
       <y>120</y>
-      <width>141</width>
-      <height>31</height>
+      <width>140</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -1450,6 +1450,24 @@ background-color: transparent</string>
     </property>
     <property name="text">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;You are Black!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="chess_move">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>170</y>
+      <width>140</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 15pt;
+color: rgb(255, 255, 255);
+background-color: transparent</string>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;test&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <zorder>background</zorder>
@@ -1535,6 +1553,7 @@ background-color: transparent</string>
    <zorder>label_16</zorder>
    <zorder>label_9</zorder>
    <zorder>label_17</zorder>
+   <zorder>chess_move</zorder>
   </widget>
  </widget>
  <resources>

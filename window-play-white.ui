@@ -351,8 +351,8 @@ background-color: transparent</string>
      <rect>
       <x>630</x>
       <y>120</y>
-      <width>141</width>
-      <height>31</height>
+      <width>140</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -361,7 +361,7 @@ color: rgb(255, 255, 255);
 background-color: transparent</string>
     </property>
     <property name="text">
-     <string>You are White!</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;You are White!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="a5">
@@ -1452,6 +1452,24 @@ background-color: transparent</string>
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="chess_move">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>170</y>
+      <width>140</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 15pt;
+color: rgb(255, 255, 255);
+background-color: transparent</string>
+    </property>
+    <property name="text">
+     <string>test</string>
+    </property>
+   </widget>
    <zorder>background</zorder>
    <zorder>more_button</zorder>
    <zorder>label</zorder>
@@ -1535,6 +1553,7 @@ background-color: transparent</string>
    <zorder>f8</zorder>
    <zorder>h7</zorder>
    <zorder>a6</zorder>
+   <zorder>chess_move</zorder>
   </widget>
  </widget>
  <resources>
