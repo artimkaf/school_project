@@ -170,12 +170,56 @@ class WindowPlay(QtWidgets.QMainWindow):
         from_type = self.board_buttons_info[row_from][column_from]['type']
         from_color = self.board_buttons_info[row_from][column_from]['color']
 
-        if from_text == '':
-            self.move_save.clear()
-            return False
 
         if self.board_buttons_info[row_from][column_from]['color'] == self.board_buttons_info[row_to][column_to]['color']:
             self.move_save.clear()
+            return False
+
+        can_move_to = []
+
+        # can_move_to.append({'row': row_from, 'column': column_from})
+
+        if from_type == 'pawn':  # пешка / pawn / ♙ ♟
+            if from_color == 'black':
+                can_move_to.append({'row': row_from - 1, 'column': column_from})
+                if row_from == 6:
+                    can_move_to.append({'row': row_from - 2, 'column': column_from})
+
+            if from_color == 'white':
+                can_move_to.append({'row': row_from + 1, 'column': column_from})
+                if row_from == 1:
+                    can_move_to.append({'row': row_from + 2, 'column': column_from})
+
+        if from_type == 'bishop':  # слон / bishop / ♗ ♝
+            pass
+
+
+
+        if from_type == 'knight':  # конина / knight / ♘ ♞
+            pass
+
+
+
+        if from_type == 'rook':  # ладья / rook / ♖ ♜
+            pass
+
+
+
+        if from_type == 'king':  # король / king / ♔ ♚
+            pass
+
+
+
+        if from_type == 'queen':  # королева / queen / ♕ ♛
+            pass
+
+        pass_or_not = 0
+        for index in range (len(can_move_to)):
+            if can_move_to[index]['row'] == row_to and can_move_to[index]['column'] == column_to:
+                pass_or_not = 1
+
+        if pass_or_not == 0:
+            self.move_save.pop(1)
             return False
 
         self.board_buttons_info[row_from][column_from]['unicode'] = ''
