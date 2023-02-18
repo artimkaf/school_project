@@ -179,7 +179,7 @@ class WindowPlay(QtWidgets.QMainWindow):
 
         # can_move_to.append({'row': row_from, 'column': column_from})
 
-        if from_type == 'pawn':  # пешка / pawn / ♙ ♟
+        if from_type == 'pawn':  # пешка / pawn / ♙ ♟ / полностью готово
             if from_color == 'black':
                 can_move_to.append({'row': row_from - 1, 'column': column_from})
                 if row_from == 6:
@@ -190,28 +190,127 @@ class WindowPlay(QtWidgets.QMainWindow):
                 if row_from == 1:
                     can_move_to.append({'row': row_from + 2, 'column': column_from})
 
+            if row_to == 7 or row_to == 0:
+                if from_color == 'black':
+                    from_text = '♛'
+                if from_color == 'white':
+                    from_text = '♕'
+                from_type = 'queen'
+
         if from_type == 'bishop':  # слон / bishop / ♗ ♝
-            pass
+            for right_up in range (1, 8): # ⠙
+                if row_from + right_up == 7 or row_from + right_up == 0 or column_from + right_up == 7 or column_from + right_up == 0:
+                    break
+                can_move_to.append({'row': row_from + right_up, 'column': column_from + right_up})
 
+            for right_down in range(1, 8): # ⠚
+                if row_from - right_down == 7 or row_from - right_down == 0 or column_from + right_down == 7 or column_from + right_down == 0:
+                    break
+                can_move_to.append({'row': row_from - right_down, 'column': column_from + right_down})
 
+            for left_down in range(1, 8): # ⠓
+                if row_from - left_down == 7 or row_from - left_down == 0 or column_from - left_down == 7 or column_from - left_down == 0:
+                    break
+                can_move_to.append({'row': row_from - left_down, 'column': column_from - left_down})
 
+            for left_up in range(1, 8): # ⠋
+                if row_from + left_up == 7 or row_from + left_up == 0 or column_from - left_up == 7 or column_from - left_up == 0:
+                    break
+
+                can_move_to.append({'row': row_from + left_up, 'column': column_from - left_up})
+                
         if from_type == 'knight':  # конина / knight / ♘ ♞
             pass
 
 
-
         if from_type == 'rook':  # ладья / rook / ♖ ♜
-            pass
+            for rook_up in range(1, 8):
+                can_move_to.append({'row': row_from + rook_up, 'column': column_from})
+                if row_from + rook_up == 7 or row_from + rook_up == 0:
+                    break
 
+            for rook_right in range(1, 8):
+                can_move_to.append({'row': row_from, 'column': column_from + rook_right})
+                if column_from + rook_right == 7 or column_from + rook_right == 0:
+                    break
 
+            for rook_down in range(1, 8):
+                can_move_to.append({'row': row_from - rook_down, 'column': column_from})
+                if row_from - rook_down == 7 or row_from - rook_down == 0:
+                    break
+
+            for rook_left in range(1, 8):
+                can_move_to.append({'row': row_from, 'column': column_from - rook_left})
+                if column_from - rook_left == 7 or column_from - rook_left == 0:
+                    break
 
         if from_type == 'king':  # король / king / ♔ ♚
-            pass
-
-
+            can_move_to.append({'row': row_from + 1, 'column': column_from})
+            can_move_to.append({'row': row_from + 1, 'column': column_from + 1})
+            can_move_to.append({'row': row_from, 'column': column_from + 1})
+            can_move_to.append({'row': row_from - 1, 'column': column_from + 1})
+            can_move_to.append({'row': row_from - 1, 'column': column_from})
+            can_move_to.append({'row': row_from - 1, 'column': column_from - 1})
+            can_move_to.append({'row': row_from, 'column': column_from - 1})
+            can_move_to.append({'row': row_from + 1, 'column': column_from - 1})
 
         if from_type == 'queen':  # королева / queen / ♕ ♛
-            pass
+
+            for right_up in range(1, 8):  # ⠙
+                can_move_to.append({'row': row_from + right_up, 'column': column_from + right_up})
+                print('yea')
+                if row_from + right_up == 7 or row_from + right_up == 0 or column_from + right_up == 7 or column_from + right_up == 0:
+                    break
+
+            for right_down in range(1, 8):  # ⠚
+                can_move_to.append({'row': row_from - right_down, 'column': column_from + right_down})
+                print('yea')
+                if row_from - right_down == 7 or row_from - right_down == 0 or column_from + right_down == 7 or column_from + right_down == 0:
+                    break
+
+            for left_down in range(1, 8):  # ⠓
+                can_move_to.append({'row': row_from - left_down, 'column': column_from - left_down})
+                print('yea')
+                if row_from - left_down == 7 or row_from - left_down == 0 or column_from - left_down == 7 or column_from - left_down == 0:
+                    break
+
+            for left_up in range(1, 8):  # ⠋
+                can_move_to.append({'row': row_from + left_up, 'column': column_from - left_up})
+                print('yea')
+                if row_from + left_up == 7 or row_from + left_up == 0 or column_from - left_up == 7 or column_from - left_up == 0:
+                    break
+
+            for rook_up in range(1, 8):
+                can_move_to.append({'row': row_from + rook_up, 'column': column_from})
+                if row_from + rook_up == 7 or row_from + rook_up == 0:
+                    break
+
+            for rook_right in range(1, 8):
+                can_move_to.append({'row': row_from, 'column': column_from + rook_right})
+                if column_from + rook_right == 7 or column_from + rook_right == 0:
+                    break
+
+            for rook_down in range(1, 8):
+                can_move_to.append({'row': row_from - rook_down, 'column': column_from})
+                if row_from - rook_down == 7 or row_from - rook_down == 0:
+                    break
+
+            for rook_left in range(1, 8):
+                can_move_to.append({'row': row_from, 'column': column_from - rook_left})
+                if column_from - rook_left == 7 or column_from - rook_left == 0:
+                    break
+
+
+        print(can_move_to)
+        '''        
+        for out_of_range_check in range (len(can_move_to)):
+            row_to_check = can_move_to[out_of_range_check]['row']
+            column_to_check = can_move_to[out_of_range_check]['column']
+            if row_to_check > 7 or row_to_check < 0 or column_to_check > 7 or column_to_check < 0:
+                can_move_to.pop(out_of_range_check)
+
+        print(can_move_to)
+        '''
 
         pass_or_not = 0
         for index in range (len(can_move_to)):
